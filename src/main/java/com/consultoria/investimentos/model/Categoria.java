@@ -18,7 +18,7 @@ public class Categoria {
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
     private List<Ativo> ativos;
 
-    public Categoria() {} // Construtor vazio obrigatório do JPA
+    public Categoria() {}
 
     // Getters e Setters
     public Long getId() { return id; }

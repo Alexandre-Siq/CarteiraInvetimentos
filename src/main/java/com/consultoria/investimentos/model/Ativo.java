@@ -9,14 +9,14 @@ public class Ativo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String nome;   // Ex: Petrobras
-    private String codigo; // Ex: PETR4
+    private String nome; 
+    private String codigo; 
     private Double valorAtual;
 
     // --- O RELACIONAMENTO N:1 ---
     // Muitos Ativos pertencem a UMA Categoria.
     @ManyToOne
-    @JoinColumn(name = "categoria_id") // Isso cria a coluna de chave estrangeira no banco
+    @JoinColumn(name = "categoria_id")
     private Categoria categoria;
 
     public Ativo() {}

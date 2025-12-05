@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AtivoRepository extends JpaRepository<Ativo, Long> {
-    // O Spring cria o código SQL em tempo de execução para nós.
+    
 }
