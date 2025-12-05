@@ -10,7 +10,7 @@ Desenvolvido como projeto prático para consolidar conhecimentos em **Java Backe
 
 | Dashboard de Ativos | Formulário de Cadastro |
 |:---:|:---:|
-| ![Dashboard](caminho-para-sua-imagem-dashboard.png) | ![Formulário](caminho-para-sua-imagem-form.png) |
+| ![Ativos](Tela_Ativos.png) | ![Categorias](Tela_Categorias.png) |
 > *Preview da interface com Bootstrap 5 e Thymeleaf.*
 
 ## 🛠 Tecnologias Utilizadas
