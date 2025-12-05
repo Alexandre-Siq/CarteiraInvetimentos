@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Carteira | Categorias</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <style>
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .navbar {
+            background: linear-gradient(45deg, #0d6efd, #0dcaf0);
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,.05);
+        }
+        /* Estilo específico para os botões redondos de ação */
+        .btn-action {
+            width: 35px;
+            height: 35px;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-wallet2"></i> Investimentos
+            </a>
+             <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active fw-bold" href="/categorias">Categorias</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/ativos">Ativos</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="fw-bold text-dark">Categorias</h2>
+                <p class="text-muted">Gerencie os tipos de ativos da sua carteira</p>
+            </div>
+            <a href="/categorias/nova" class="btn btn-primary btn-lg rounded-pill px-4 shadow-sm">
+                <i class="bi bi-plus-lg me-2"></i> Nova Categoria
+            </a>
+        </div>
+
+        <div class="card p-4">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col"># ID</th>
+                            <th scope="col">Nome da Categoria</th>
+                            <th scope="col" class="text-end">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="cat : ${categorias}">
+                            <td class="fw-bold text-muted" th:text="${'#' + cat.id}">#1</td>
+                            <td>
+                                <span class="fw-semibold" th:text="${cat.nome}">Ações</span>
+                            </td>
+                            
+                            <td class="text-end">
+                                <a th:href="@{/categorias/editar/{id}(id=${cat.id})}" 
+                                    class="btn btn-outline-primary btn-action me-1" 
+                                    title="Editar">
+                                    <i class="bi bi-pencil-fill"></i>
+                                </a>
+                                
+                                <a th:href="@{/categorias/deletar/{id}(id=${cat.id})}" 
+                                   class="btn btn-outline-danger btn-action" 
+                                   title="Excluir"
+                                   onclick="return confirm('Tem certeza que deseja excluir esta categoria?');">
+                                    <i class="bi bi-trash-fill"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        
+                        <tr th:if="${#lists.isEmpty(categorias)}">
+                            <td colspan="3" class="text-center py-5 text-muted">
+                                <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                                Nenhuma categoria cadastrada ainda.
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
